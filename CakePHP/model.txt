@@ -1,0 +1,152 @@
+######################################################################
+# モデル関連
+#
+# @filename model.txt
+# @category CakePhp
+# @package  CakePhpModel
+# @author   fromearth
+# @link     https://github.com/fromearth
+######################################################################
+
+
+■モデルのクラス名は単数形でキャメル記法
+Person、BigPerson、ReallyBigPerson などは規約に合ったモデル名
+
+
+■モデルに対応するテーブル名は、複数形でアンダースコア記法
+people、big_people、really_big_people
+
+二個以上の単語で構成されるフィールドの名前は、 first_name のようにアンダースコア記法
+
+CakePHP は複合主キーをサポートしません。
+
+全てのテーブル(join テーブルは除く)は、それぞれの列を一意に識別する単一フィールドのプライマリーキーが必要
+もし、単数形のプライマリーキーではないテーブルのモデルをお望みなら、テーブルに単一フィールドのプライマリーキーを追加することが CakePHP の規約
+
+異なるテーブル名を利用したい時には、モデルクラスの $useTable メンバ変数
+
+主キーフィールドをid以外の名前にする場合、モデルクラスの $primaryKey メンバ変数(
+
+
+■条件配列
+A = B   array( 'モデル名.フィールド名' => '値' )
+A > B   array( 'モデル名.フィールド名 >' => '値' )
+A LIKE B    array( 'モデル名.フィールド名 LIKE' => '%値%' )
+BETWEEN array(
+        'モデル名.フィールド名 BETWEEN ? AND ?'
+            => array( '値1', '値2' )
+    )
+AND条件 array(
+        'モデル名.フィールド名 LIKE' => '%値%' ,
+        'モデル名.フィールド名 LIKE' => '%値%' ,
+        ...
+    )
+OR条件  array(
+        'OR' => array(
+            'モデル名.フィールド名 LIKE' => '%値%' ,
+            'モデル名.フィールド名 LIKE' => '%値%' ,
+            ...
+        ),
+    )
+
+
+■モデルクラスはAppModelを継承
+class RedApple extends AppModel
+{
+    var $name = 'RedApple';
+}
+
+
+■モデルクラスのメソッド
+SQL文の実行でエラーが発生したときに呼び出されるコールバックメソッド onError が利用可能
+
+
+■[抽出] find( 検索種別, オプション連想配列 )
+検索種別
+引数    意味
+all'    全データを抽出する。
+first'  最初の1行を抽出する。
+list'   一覧(リストボックス)で利用できるようなリストを抽出する。
+        第2引数のキー 'fields' で抽出する列を指定できる。
+count'  行数を取得する。
+
+オプション連想配列
+キー    意味
+conditions' 検索条件の指定。上で示した「条件配列」を値とする。
+            例： 'conditions' => array( 'RedApple.name LIKE' => '%apple%' )
+fields' 抽出するフィールド名。フィールド名文字列の配列を値とする。
+        例： 'fields' => array( 'RedApple.name', 'RedApple.price' )
+recursive'  再帰的に取得する深度。
+order'  抽出データの並び順(ORDER BY)を指定する。
+        例： 'order' => 'RedApple.name DESC'
+        例： 'order' => array( 'RedApple.name', 'RedApple.id DESC' )
+group'  グループ化(GROUP BY)して抽出する。
+        例： 'group' => 'RedApple.name'
+limit'  抽出データ数の制限(LIMIT)を指定する。
+        例： 'limit' => 20
+offset' 抽出データのオフセットを指定する。
+        例： 'offset' => 40
+page'   取得するページ数。
+
+
+戻り値
+第1引数が'all'　　$arr[行番号][モデル名][フィールド名]
+第1引数が'first'　$arr[モデル名][フィールド名]
+第1引数が'list'　 $arr[主キー列の値][name列かtitle列の値]
+第1引数が'count'　行数の整数値。
+
+
+■[抽出] findAllByXxxx( 値 )
+戻り値
+find('all')と同じ。
+
+
+■[抽出] findByXxxx( 値 )
+戻り値
+find('first')と同じ。
+
+
+■[挿入/更新] save( データ配列 )
+Array
+(
+    [モデル名] => Array
+        (
+            [フィールド名] => 値
+            [フィールド名] => 値
+            ...
+        )
+)
+
+戻り値　真偽値
+
+
+■[更新] saveField( フィールド名, 値 )
+・特定のフィールドのみ更新する。あらかじめ更新対象のデータの主キーを指定しておく。
+$this->RedApple->id = 1;
+$this->RedApple->saveField( 'price', 100 );
+
+戻り値　真偽値
+
+
+■[更新] updateAll( データ配列, 条件配列 )
+・特定のフィールドのみ更新する。あらかじめ更新対象のデータの主キーを指定しておく。
+Array
+(
+    [フィールド名] => 値
+    [フィールド名] => 値
+    ...
+)
+
+戻り値　真偽値
+
+
+■[削除] delete( 値 )、remove( 値 )
+主キー列の値を指定してデータを削除する。
+
+戻り値　真偽値
+
+
+■[削除] deleteAll( 条件配列 )
+・主キー列の値を指定してデータを削除する。
+
+戻り値　真偽値

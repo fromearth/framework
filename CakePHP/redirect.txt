@@ -1,0 +1,12 @@
+######################################################################
+# リダイレクト関連
+#
+# @filename redirect.txt
+# @category CakePhp
+# @package  CakePhpRedirect
+# @author   fromearth
+# @link     https://github.com/fromearth
+######################################################################
+
+
+$this->redirect('./index');

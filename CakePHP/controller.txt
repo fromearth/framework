@@ -1,0 +1,77 @@
+######################################################################
+# コントローラ関連
+#
+# @filename controller.txt
+# @category CakePhp
+# @package  CakePhpController
+# @author   fromearth
+# @link     https://github.com/fromearth
+######################################################################
+
+
+■コントローラの規約
+コントローラのクラス名は複数形でキャメル記法＋Controller
+PeopleController、BigPeopleController、ReallyBigPeopleControllerなどは規約に合ったコントローラ名
+
+コントローラのみ指定された場合、デフォルトで実行されるアクションはindex()
+なのでコントローラに最初にindex()メソッドを書いておいたほうがよい
+
+メソッド名の頭に(_)を付加すると外部から直接呼ばれないよう隠ぺいできる
+
+
+■アクション名
+fooBar()
+
+
+■メンバ変数
+$name       コントローラ名。省略時はクラス名から自動判別。
+$uses       コントローラで使用するモデル名。使用しない場合は NULL を指定するか、変数自体を定義しない。
+$autoRender ビューを自動レンダリングする(TRUE ※デフォ)か、アクション内でechoなどにより手動出力する(FALSE)か。
+$autoLayout レイアウトを使う(TRUE ※デフォ)か、使わない(FALSE)か。
+$layout     レイアウトを使う場合、レイアウト名(ファイル名の拡張子以外)を指定する。省略時はシステムのレイアウトを使用。
+
+
+■コールバック処理タイミング
+beforeFilter
+↓
+Action
+↓
+beforeRender
+↓
+ViewのRender
+↓
+afterFilter
+
+
+■コントローラに共通処理を持たせる方法いろいろ
+・特定コントローラのみの共通処理　⇒　beforeFilter() afterFilter() beforeRender() などのコールバックを使う
+・全コントローラに共通処理　⇒　スーパークラスAppControllerにコールバックを実装する
+・その他再利用したい処理　⇒　コンポーネントを作成する
+
+
+■モデル使用
+コントローラ内では、「$this->モデル名」がモデルクラスのインスタンスとなる。
+function index()
+    {
+        $data = $this->RedApple->find('all');
+        $this->set('data', $data);
+    }
+
+
+■フォームデータの取得方法
+・フォームデータを取得するには、$this->params 変数を利用する。
+
+GET　$tihs->params['url'][名前]
+POST　$tihs->params['form'][名前]
+
+
+■コントローラからビューへ変数をセットする方法
+$this->set("data", $result);
+コントローラでの変数 $result の値を、 ビューでの変数 $data にセットしている。
+
+
+■データのサニタイジング
+・コントローラ側でサニタイズするケースは少ないと思う
+App::import('Sanitize');      // ライブラリ呼出し
+Sanitize::html($text);
+

@@ -1,0 +1,24 @@
+######################################################################
+# ビュー関連
+#
+# @filename view.txt
+# @category CakePhp
+# @package  CakePhpView
+# @author   fromearth
+# @link     https://github.com/fromearth
+######################################################################
+
+
+■レイアウト
+自前レイアウトを使うには、コントローラの $autoLayout を TURE にし、$layout にレイアウトファイル名の拡張子以外の部分を指定する。
+
+項目                種別     意味
+$content_for_layout 変数     ビューでレンダリングされた表示内容文字列。
+$html->charset()    メソッド 文字コードを指定するmetaタグ文字列を返す。
+$title_for_layout   変数     titleタグ内に記述するページタイトルを示す文字列。ただし、CakePHP 1.2用。
+                                1.3では、コントローラで、適当な変数に値をセットする。これをしてない場合は、
+                                コントローラ名がタイトルとなる？
+$html->css(CSS名)   メソッド CSSファイルを参照するlinkタグ文字列を返す。引数は、app/webroot/cssフォルダに
+                                保存したCSSファイル名の拡張子.css以外の文字列。
+$scripts_for_layout 変数     scriptタグを含むJavaScriptコードの文字列。必要なときにJavaScriptコードが生成され、
+                                この変数に代入される？

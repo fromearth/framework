@@ -1,0 +1,25 @@
+h1. CakePHP
+
+h2. ■セットアップ
+
+* ソースを解凍
+* httpd.conf「ドキュメントルート」設定および「Directoryコンテナ」設定を/path/to/cake/app/webrootに編集
+* ブラウザでトップページ表示確認（黄色＝警告がすべて緑表示されるまで調整）app/config/core.php app/config/database.phpの編集
+
+h2. ■ディレクトリ構成
+
+* app/            開発者がさわる場所
+* app/libs/       自前の共通ライブラリ置き場
+* app/vendors/    外部機関（サードパーティー）配布のライブラリ置き場
+* app/plugins/    外部機関のプラグインパッケージ置き場
+* app/webroot/    ドキュメントルート
+
+h2. ■クラス名とファイル名
+
+* FooBarController ⇒ foo_bar_controller.php  コントローラ    コントローラのクラス名は複数形でキャメル記法
+* FooBarComponent  ⇒ foo_bar.php             コンポーネント
+* FooMst           ⇒ foo_mst.php             モデルクラス    テーブル名foo_mstに対応 テーブル名もカラム名をスネーク
+* FooBarBehavior   ⇒ foo_bar.php             ビヘイビア
+* FooBarView       ⇒ foo_bar.php             ビュー
+* FooBarHelper     ⇒ foo_bar.php              ヘルパー
+
