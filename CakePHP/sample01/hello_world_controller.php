@@ -1,6 +1,6 @@
 <?php
 /**
- * 「Hello world」表示コントローラ例
+ * 「Hello world」表示（コントローラだけで完結編）
  *
  * @filename hello_world_controller.php
  * @category CakePhp
@@ -10,8 +10,8 @@
  */
 
 /**
- * 「Hello world!」表示コントローラ例
- * ビューを使わないコントローラのみで画面表示
+ * 「Hello world」表示（コントローラだけで完結編）
+ * ビューを使わずコントローラのみで画面表示させる
  *
  * @url http://www.example.com/hello_world
  */
