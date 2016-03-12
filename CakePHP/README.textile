@@ -18,7 +18,7 @@ h2. ■クラス名とファイル名
 
 * FooBarController ⇒ foo_bar_controller.php  コントローラ    コントローラのクラス名は複数形でキャメル記法
 * FooBarComponent  ⇒ foo_bar.php             コンポーネント
-* FooMst           ⇒ foo_mst.php             モデルクラス    テーブル名foo_mstに対応 テーブル名もカラム名をスネーク
+* FooMst           ⇒ foo_mst.php             モデルクラス    テーブル名foo_mstに対応 テーブル名もカラム名もスネーク
 * FooBarBehavior   ⇒ foo_bar.php             ビヘイビア
 * FooBarView       ⇒ foo_bar.php             ビュー
 * FooBarHelper     ⇒ foo_bar.php              ヘルパー
