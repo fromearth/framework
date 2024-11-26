@@ -38,6 +38,5 @@ php artisan serve --port=8000
 ```
 
 ## ページ表示確認
-WebブラウザにURLを打ち込んで表示を確認します  
-http://localhost:8000  
-（http://サーバ名:8000）
+WebブラウザにURLを打ち込んでLaravelの初期表示を確認します  
+http://localhost:8000 （http://サーバ名:8000）
