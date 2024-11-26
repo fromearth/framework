@@ -17,7 +17,7 @@ Route::get('/sample02', [SampleController::class, 'show']);
 php artisan make:controller SampleController
 composer dump-autoload
 ```
-ファイル生成後はオートローダーを作り直します。
+ファイル作成してオートローダーを作り直します。
 
 2. コントローラ実装  
 _file: app/Http/Controllers/SampleController.php_
