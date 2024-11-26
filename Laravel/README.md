@@ -2,7 +2,7 @@
 PHPフレームワークLaravelをインストールして簡単な画面表示まで
 
 ## インストール準備
-1. [<a href="https://www.google.co.jp/search?q=laravel+release+notes" target="_blank">Laravel release notes</a>]で検索してインストールしたいLaravelおよびPHPバージョンを決める
+1. [<a href="https://www.google.co.jp/search?q=laravel+release+notes" onclick="window.open(this.href, '_blank', 'noopener'); return false;">Laravel release notes</a>]で検索してインストールしたいLaravelおよびPHPバージョンを決める
 2. PHPをインストール
 3. Composerをインストール
 4. Node.jsをインストール（フロントエンド構築する場合）
