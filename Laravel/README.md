@@ -25,6 +25,7 @@ return [
 ```
 
 2. 実行権限（Linuxなどファイル実行権限がある環境の場合）
+※Webサーバの実行ユーザとファイルオーナーが同じ場合は不要
 ```sh
 cd /path/to/myproject
 chmod -R 777 storage bootstrap/cache
